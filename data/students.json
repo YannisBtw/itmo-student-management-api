@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "fullName": "Иванов Иван",
+        "group": "P3120",
+        "isuId": 505115,
+        "dormitoryNumber": 8,
+        "roomNumber": 777,
+        "moveInDate": "2026-09-11",
+        "isForeign": false,
+        "notes": "Тестовый студент"
+    },
+    {
+        "id": 2,
+        "fullName": "Абоба Боба",
+        "group": "P3220",
+        "isuId": 505116,
+        "dormitoryNumber": 12,
+        "roomNumber": 321,
+        "moveInDate": "2026-09-09",
+        "isForeign": true,
+        "notes": "4 часа ночи..."
+    }
+]

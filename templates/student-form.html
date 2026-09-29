@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление студента</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="icon" href="/static/favicon.ico">
+</head>
+
+<body>
+
+<header class="page-header">
+    <h1>Добавление студента</h1>
+
+    <a href="/" class="add-button">
+        ← Назад к списку студентов
+    </a>
+</header>
+
+<main>
+    <form id="studentForm">
+
+        <div class="form-field">
+            <label for="fullName">ФИО студента</label>
+            <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    required
+            >
+        </div>
+
+        <div class="form-field">
+            <label for="group">Группа</label>
+            <input
+                    type="text"
+                    id="group"
+                    name="group"
+                    pattern="[A-Z][1-9][1-4][0-9]{2}"
+                    title="Одна заглавная латинская буква, затем цифра 1–9, цифра 1–4 и ещё две любые цифры"
+                    required
+            >
+        </div>
+
+        <div class="form-field">
+            <label for="isuId">ИСУ ID</label>
+            <input
+                    type="number"
+                    id="isuId"
+                    name="isuId"
+                    min="100000"
+                    max="999999"
+                    required
+            >
+        </div>
+
+        <div class="form-field">
+            <label for="dormitoryNumber">Номер общежития</label>
+            <input
+                    type="number"
+                    id="dormitoryNumber"
+                    name="dormitoryNumber"
+                    min="1"
+                    max="99"
+                    required
+            >
+        </div>
+
+        <div class="form-field">
+            <label for="roomNumber">Комната</label>
+            <input
+                    type="number"
+                    id="roomNumber"
+                    name="roomNumber"
+                    min="1"
+                    max="9999"
+                    required
+            >
+        </div>
+
+        <div class="form-field">
+            <label for="moveInDate">Дата заселения</label>
+            <input
+                    type="date"
+                    id="moveInDate"
+                    name="moveInDate"
+                    min="1990-01-01"
+                    required
+            >
+        </div>
+
+        <div class="form-field">
+            <label>
+                <input
+                        type="checkbox"
+                        id="isForeign"
+                        name="isForeign"
+                >
+                Иностранный студент
+            </label>
+        </div>
+
+        <div class="form-field">
+            <label for="notes">Заметки</label>
+            <textarea
+                    id="notes"
+                    name="notes"
+            ></textarea>
+        </div>
+
+        <button type="submit">Сохранить</button>
+
+    </form>
+</main>
+
+<script src="/static/js/db.js"></script>
+<script src="/static/js/form.js"></script>
+
+</body>
+
+</html>
