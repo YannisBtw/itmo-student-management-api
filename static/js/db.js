@@ -1,29 +1,20 @@
-const API_URL = "/api/requests";
+const API_URL = "/api/students";
 
 
 async function getAllStudents(filters = {}) {
-    const params = new URLSearchParams();
+    const hasFilters = Object.keys(filters).length > 0;
 
-    if (filters.group) {
-        params.set("group", filters.group);
-    }
+    const options = hasFilters
+        ? {
+            method: "QUERY",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(filters)
+        }
+        : {};
 
-    if (filters.dormitory) {
-        params.set("dormitory", filters.dormitory);
-    }
-
-    if (
-        filters.isForeign !== undefined &&
-        filters.isForeign !== ""
-    ) {
-        params.set("isForeign", filters.isForeign);
-    }
-
-    const query = params.toString();
-
-    const url = query ? API_URL + "?" + query : API_URL;
-
-    const response = await fetch(url);
+    const response = await fetch(API_URL, options);
 
     if (!response.ok) {
         throw new Error(

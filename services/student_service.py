@@ -172,7 +172,16 @@ def delete_student(student_id):
     return False
 
 
-def filter_students(group=None, dormitory=None, is_foreign=None):
+def filter_students(
+    group=None,
+    dormitory=None,
+    is_foreign=None,
+    full_name=None,
+    move_in_date=None,
+    notes=None,
+    room_number=None,
+    isu_id=None
+):
     students = get_all_students()
 
     if group is not None:
@@ -189,11 +198,46 @@ def filter_students(group=None, dormitory=None, is_foreign=None):
             if student["dormitoryNumber"] == dormitory
         ]
 
+    if room_number is not None:
+        students = [
+            student
+            for student in students
+            if student["roomNumber"] == room_number
+        ]
+
+    if isu_id is not None:
+        students = [
+            student
+            for student in students
+            if student["isuId"] == isu_id
+        ]
+
     if is_foreign is not None:
         students = [
             student
             for student in students
             if student["isForeign"] == is_foreign
+        ]
+
+    if full_name is not None:
+        students = [
+            student
+            for student in students
+            if full_name.casefold() in student["fullName"].casefold()
+        ]
+
+    if move_in_date is not None:
+        students = [
+            student
+            for student in students
+            if student["moveInDate"] == move_in_date
+        ]
+
+    if notes is not None:
+        students = [
+            student
+            for student in students
+            if notes.casefold() in student.get("notes", "").casefold()
         ]
 
     return students

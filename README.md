@@ -140,7 +140,7 @@ Frontend не работает с хранилищем напрямую. Все 
 После подтверждения frontend отправляет:
 
 ```http
-DELETE /api/requests/:id
+DELETE /api/students/:id
 ```
 
 ---
@@ -414,7 +414,7 @@ deleteStudent()
 После этого выполняет:
 
 ```http
-GET /api/requests/1
+GET /api/students/1
 ```
 
 и отображает полученные данные.
@@ -468,7 +468,7 @@ GET /api/requests/1
 Используется в URL:
 
 ```text
-/api/requests/1
+/api/students/1
 ```
 
 ---
@@ -643,7 +643,7 @@ Backend построен на Flask.
 API работает с префиксом:
 
 ```text
-/api/requests
+/api/students
 ```
 
 ---
@@ -654,12 +654,12 @@ API работает с префиксом:
 
 | HTTP method | Endpoint | Назначение |
 |---|---|---|
-| `GET` | `/api/requests` | Получить всех студентов |
-| `GET` | `/api/requests/:id` | Получить одного студента |
-| `POST` | `/api/requests` | Создать студента |
-| `PATCH` | `/api/requests/:id` | Изменить студента |
-| `DELETE` | `/api/requests/:id` | Удалить студента |
-| `QUERY` | `/api/requests` | Выполнить фильтрацию через JSON |
+| `GET` | `/api/students` | Получить всех студентов |
+| `GET` | `/api/students/:id` | Получить одного студента |
+| `POST` | `/api/students` | Создать студента |
+| `PATCH` | `/api/students/:id` | Изменить студента |
+| `DELETE` | `/api/students/:id` | Удалить студента |
+| `QUERY` | `/api/students` | Выполнить фильтрацию через JSON |
 
 ---
 
@@ -668,7 +668,7 @@ API работает с префиксом:
 ## Request
 
 ```http
-GET /api/requests
+GET /api/students
 ```
 
 ## Response
@@ -702,7 +702,7 @@ GET /api/requests
 ## Request
 
 ```http
-GET /api/requests/1
+GET /api/students/1
 ```
 
 ## Successful response
@@ -749,7 +749,7 @@ GET /api/requests/1
 ## Request
 
 ```http
-POST /api/requests
+POST /api/students
 Content-Type: application/json
 ```
 
@@ -805,7 +805,7 @@ ID создаётся сервером автоматически.
 Например:
 
 ```http
-PATCH /api/requests/2
+PATCH /api/students/2
 ```
 
 Body:
@@ -844,7 +844,7 @@ Body:
 ## Request
 
 ```http
-DELETE /api/requests/2
+DELETE /api/students/2
 ```
 
 ---
@@ -882,7 +882,7 @@ QUERY
 Пример:
 
 ```http
-QUERY /api/requests
+QUERY /api/students
 Content-Type: application/json
 ```
 
@@ -935,7 +935,7 @@ isForeign
 ## Фильтрация по группе
 
 ```http
-GET /api/requests?group=P3120
+GET /api/students?group=P3120
 ```
 
 ---
@@ -943,7 +943,7 @@ GET /api/requests?group=P3120
 ## По общежитию
 
 ```http
-GET /api/requests?dormitory=8
+GET /api/students?dormitory=8
 ```
 
 ---
@@ -951,13 +951,13 @@ GET /api/requests?dormitory=8
 ## По статусу иностранного студента
 
 ```http
-GET /api/requests?isForeign=true
+GET /api/students?isForeign=true
 ```
 
 или:
 
 ```http
-GET /api/requests?isForeign=false
+GET /api/students?isForeign=false
 ```
 
 ---
@@ -965,7 +965,7 @@ GET /api/requests?isForeign=false
 ## Несколько фильтров
 
 ```http
-GET /api/requests?group=P3120&dormitory=8&isForeign=false
+GET /api/students?group=P3120&dormitory=8&isForeign=false
 ```
 
 ---
@@ -991,7 +991,7 @@ group=P3120&dormitory=8&isForeign=false
 И выполняется:
 
 ```http
-GET /api/requests?group=P3120&dormitory=8&isForeign=false
+GET /api/students?group=P3120&dormitory=8&isForeign=false
 ```
 
 Сам frontend студентов не фильтрует.
@@ -1416,7 +1416,7 @@ max(student["id"] for student in students) + 1
 Например:
 
 ```javascript
-const response = await fetch("/api/requests");
+const response = await fetch("/api/students");
 ```
 
 ---
@@ -1424,7 +1424,7 @@ const response = await fetch("/api/requests");
 Для отправки JSON:
 
 ```javascript
-fetch("/api/requests", {
+fetch("/api/students", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
@@ -1472,7 +1472,7 @@ Frontend-валидация
           ↓
 JSON.stringify()
           ↓
-POST /api/requests
+POST /api/students
           ↓
 Flask
           ↓
@@ -1508,7 +1508,7 @@ studentId = 3
 Затем выполняется:
 
 ```http
-GET /api/requests/3
+GET /api/students/3
 ```
 
 Полученные значения подставляются в форму.
@@ -1516,7 +1516,7 @@ GET /api/requests/3
 После изменения отправляется:
 
 ```http
-PATCH /api/requests/3
+PATCH /api/students/3
 ```
 
 ---
@@ -1548,7 +1548,7 @@ PATCH /api/requests/3
 frontend получает ID из URL и выполняет:
 
 ```http
-GET /api/requests/3
+GET /api/students/3
 ```
 
 Ответ отображается в DOM.
@@ -1566,7 +1566,7 @@ confirm(...)
 Если пользователь подтверждает действие:
 
 ```http
-DELETE /api/requests/:id
+DELETE /api/students/:id
 ```
 
 После успешного ответа таблица загружается заново.
@@ -1628,7 +1628,7 @@ window.location.search
 ## Получить всех студентов
 
 ```powershell
-curl.exe -i http://127.0.0.1:5000/api/requests
+curl.exe -i http://127.0.0.1:5000/api/students
 ```
 
 ---
@@ -1636,7 +1636,7 @@ curl.exe -i http://127.0.0.1:5000/api/requests
 ## Получить студента с ID 1
 
 ```powershell
-curl.exe -i http://127.0.0.1:5000/api/requests/1
+curl.exe -i http://127.0.0.1:5000/api/students/1
 ```
 
 ---
@@ -1644,7 +1644,7 @@ curl.exe -i http://127.0.0.1:5000/api/requests/1
 ## Проверить отсутствующего студента
 
 ```powershell
-curl.exe -i http://127.0.0.1:5000/api/requests/999999
+curl.exe -i http://127.0.0.1:5000/api/students/999999
 ```
 
 Ожидаемый статус:
@@ -1658,7 +1658,7 @@ curl.exe -i http://127.0.0.1:5000/api/requests/999999
 ## Фильтр по группе
 
 ```powershell
-curl.exe -i "http://127.0.0.1:5000/api/requests?group=P3120"
+curl.exe -i "http://127.0.0.1:5000/api/students?group=P3120"
 ```
 
 ---
@@ -1666,7 +1666,7 @@ curl.exe -i "http://127.0.0.1:5000/api/requests?group=P3120"
 ## Фильтр по общежитию
 
 ```powershell
-curl.exe -i "http://127.0.0.1:5000/api/requests?dormitory=8"
+curl.exe -i "http://127.0.0.1:5000/api/students?dormitory=8"
 ```
 
 ---
@@ -1674,7 +1674,7 @@ curl.exe -i "http://127.0.0.1:5000/api/requests?dormitory=8"
 ## Несколько фильтров
 
 ```powershell
-curl.exe -i "http://127.0.0.1:5000/api/requests?group=P3120&dormitory=8&isForeign=false"
+curl.exe -i "http://127.0.0.1:5000/api/students?group=P3120&dormitory=8&isForeign=false"
 ```
 
 ---
@@ -1696,7 +1696,7 @@ $body = @{
 } | ConvertTo-Json
 
 Invoke-RestMethod `
-    -Uri "http://127.0.0.1:5000/api/requests" `
+    -Uri "http://127.0.0.1:5000/api/students" `
     -Method Post `
     -ContentType "application/json" `
     -Body $body
@@ -1712,7 +1712,7 @@ $body = @{
 } | ConvertTo-Json
 
 Invoke-RestMethod `
-    -Uri "http://127.0.0.1:5000/api/requests/1" `
+    -Uri "http://127.0.0.1:5000/api/students/1" `
     -Method Patch `
     -ContentType "application/json" `
     -Body $body
@@ -1723,7 +1723,7 @@ Invoke-RestMethod `
 # Пример DELETE
 
 ```powershell
-curl.exe -i -X DELETE http://127.0.0.1:5000/api/requests/1
+curl.exe -i -X DELETE http://127.0.0.1:5000/api/students/1
 ```
 
 ---
@@ -1749,7 +1749,7 @@ query.json
 После этого:
 
 ```powershell
-curl.exe -i -X QUERY http://127.0.0.1:5000/api/requests `
+curl.exe -i -X QUERY http://127.0.0.1:5000/api/students `
     -H "Content-Type: application/json" `
     --data-binary "@query.json"
 ```
@@ -1824,7 +1824,7 @@ REST API проекта является stateless.
 Например:
 
 ```http
-GET /api/requests/3
+GET /api/students/3
 ```
 
 уже содержит ID нужного студента.
@@ -1848,7 +1848,7 @@ Stateless относится не к данным приложения, а к с
 Пример:
 
 ```text
-/api/requests/3
+/api/students/3
 ```
 
 Здесь:
@@ -1868,7 +1868,7 @@ Stateless относится не к данным приложения, а к с
 Пример:
 
 ```text
-/api/requests?group=P3120
+/api/students?group=P3120
 ```
 
 Здесь:
@@ -2002,7 +2002,7 @@ Flask использует Python decorators для маршрутов.
 Пример:
 
 ```python
-@student_routes.get("/api/requests")
+@student_routes.get("/api/students")
 def get_requests():
     ...
 ```
@@ -2249,7 +2249,7 @@ history.replaceState(...)
 Пример обычного GET:
 
 ```javascript
-const response = await fetch("/api/requests");
+const response = await fetch("/api/students");
 ```
 
 ---
@@ -2257,7 +2257,7 @@ const response = await fetch("/api/requests");
 Пример DELETE:
 
 ```javascript
-await fetch("/api/requests/" + id, {
+await fetch("/api/students/" + id, {
     method: "DELETE"
 });
 ```
@@ -2286,7 +2286,7 @@ response.ok
 
 ```text
 Открытие главной страницы
-→ GET /api/requests
+→ GET /api/students
 → таблица отображается
 ```
 
@@ -2308,7 +2308,7 @@ response.ok
 
 ```text
 Подробнее
-→ GET /api/requests/:id
+→ GET /api/students/:id
 → данные отображаются
 ```
 
@@ -2436,7 +2436,7 @@ isForeign=false
 5. students.js вызывает getAllStudents()
 
 6. db.js выполняет:
-   GET /api/requests
+   GET /api/students
 
 7. Flask API получает запрос
 
@@ -2454,7 +2454,7 @@ isForeign=false
 13. form.js получает id=1
 
 14. Выполняется:
-    GET /api/requests/1
+    GET /api/students/1
 
 15. Backend возвращает данные
 
@@ -2465,7 +2465,7 @@ isForeign=false
 18. Нажимает «Сохранить»
 
 19. Выполняется:
-    PATCH /api/requests/1
+    PATCH /api/students/1
 
 20. Backend проверяет данные
 
@@ -2493,7 +2493,7 @@ http://127.0.0.1:5000/
 API:
 
 ```text
-http://127.0.0.1:5000/api/requests
+http://127.0.0.1:5000/api/students
 ```
 
 Поэтому отдельная настройка CORS для текущей архитектуры не требуется.
@@ -2505,14 +2505,14 @@ http://127.0.0.1:5000/api/requests
 Во frontend используется:
 
 ```javascript
-const API_URL = "/api/requests";
+const API_URL = "/api/students";
 ```
 
 а не:
 
 ```javascript
 const API_URL =
-    "http://127.0.0.1:5000/api/requests";
+    "http://127.0.0.1:5000/api/students";
 ```
 
 Это позволяет frontend обращаться к тому же серверу, с которого была загружена страница.
@@ -2644,7 +2644,7 @@ REST используется для взаимодействия клиента
 Ресурс:
 
 ```text
-/api/requests
+/api/students
 ```
 
 Операции:
@@ -2718,7 +2718,7 @@ body
 Пример:
 
 ```http
-POST /api/requests
+POST /api/students
 Content-Type: application/json
 
 {

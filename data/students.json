@@ -20,5 +20,38 @@
         "moveInDate": "2026-09-09",
         "isForeign": true,
         "notes": "4 часа ночи..."
+    },
+    {
+        "id": 3,
+        "fullName": "Богун Андрей Витальевич",
+        "group": "P3220",
+        "isuId": 505199,
+        "dormitoryNumber": 3,
+        "roomNumber": 54,
+        "moveInDate": "2026-09-29",
+        "isForeign": false,
+        "notes": "undefined"
+    },
+    {
+        "id": 4,
+        "fullName": "Минтус Евгений Андреевич",
+        "group": "P4255",
+        "isuId": 365829,
+        "dormitoryNumber": 2,
+        "roomNumber": 3,
+        "moveInDate": "2025-09-12",
+        "isForeign": true,
+        "notes": "1234567890`1234567890"
+    },
+    {
+        "id": 5,
+        "fullName": "Минтус Евгений Андреевич",
+        "group": "P4255",
+        "isuId": 365815,
+        "dormitoryNumber": 2,
+        "roomNumber": 3,
+        "moveInDate": "2026-09-18",
+        "isForeign": false,
+        "notes": ""
     }
 ]
